@@ -16,6 +16,8 @@ function App() {
 
   useEffect(() => {
     async function fetchTasks() {
+      if (tasks.length > 0) return;
+
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/todos?_limit=10",
         {
@@ -26,6 +28,7 @@ function App() {
       setTasks(data);
     }
     fetchTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function onTaskClick(taskId) {
